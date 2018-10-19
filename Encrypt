@@ -1,0 +1,72 @@
+import javafx.scene.control.RadioButton;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Encrypt extends JFrame {
+    private Container cp;
+    private JPanel chris = new JPanel(new GridLayout(8,1,2,2));
+    private JPanel chris1 = new JPanel();
+    private JPanel chris2 = new JPanel();
+    private JTextArea JT1 = new JTextArea("",30,15);
+    private JTextArea JT2 = new JTextArea("",30,15);
+    private JRadioButton JR1 = new JRadioButton("Encrypt");
+    private JRadioButton JR2 = new JRadioButton("Decrypt");
+    private String[] Silvia = {"DES","AES","CAESA","XOR"};
+    private JComboBox JCB1 = new JComboBox(Silvia);
+    private JButton JB1 = new JButton("RUN");
+    private JButton JB2 = new JButton("CLOSE");
+    private JLabel JL1 = new JLabel("Method");
+    private JLabel JL2 = new JLabel("KEY");
+    private JScrollPane JSP1 = new JScrollPane(JT1);
+    private JScrollPane JSP2 = new JScrollPane(JT2);
+    private JTextField JTF1 = new JTextField();
+    ButtonGroup JBG = new ButtonGroup();
+
+
+    public Encrypt(){
+        init();
+    }
+
+    private void init(){
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setBounds(100,100,500,500);
+        cp = this.getContentPane();
+        cp.add(chris,BorderLayout.CENTER);
+        cp.add(chris1,BorderLayout.EAST);
+        cp.add(chris2,BorderLayout.WEST);
+        chris1.add(JT1);
+        chris2.add(JT2);
+        chris.add(JB1);
+        chris.add(JB2);
+        chris.add(JL1);
+        chris1.add(JSP1);
+        chris2.add(JSP2);
+        JBG.add(JR1);
+        JBG.add(JR2);
+
+        JB1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (JR1.isSelected()){
+                    int dataLength = JT1.getText().length();
+                    if (dataLength>0){
+                        switch (JCB1.getSelectedIndex()){
+                            case 0:
+                            JOptionPane.showMessageDialog(Encrypt.this,"Sorry"+JCB1.getSelectedItem()+"NOT IMPLEMENT GET!");
+                                break;
+                            case 1:
+                             JOptionPane.showMessageDialog(Encrypt.this,"Sorry"+JCB1.getSelectedItem()+"NOT IMPLEMENT GET!");
+                                break;
+                            case 2:
+
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+}
