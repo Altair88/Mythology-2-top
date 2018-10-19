@@ -1,0 +1,68 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MainFrame extends JFrame {
+
+    private Container cp;
+    private JMenuBar JMALL = new JMenuBar(); //視窗最上列JMenu
+    private JMenu J1 =new JMenu("File"); //設置視窗上列的按鈕
+    private JMenu J2 =new JMenu("Tool");
+    private JMenu J3 =new JMenu("Game");
+    private JMenu J4 =new JMenu("Help");
+    private JMenuItem JR = new JMenuItem("Mythology");
+    private JMenuItem JO = new JMenuItem("OPEN"); //設置按鈕中的選項
+    private JMenuItem JC = new JMenuItem("CLOSE");
+    private JMenuItem JE = new JMenuItem("EXIT");
+    private JMenuItem JXOGame = new JMenuItem("xoGame");
+
+    public MainFrame(){
+        init();
+    }
+
+
+    private void init(){
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setBounds(100,100,500,400);
+        cp = this.getContentPane();
+        cp.setLayout(new BorderLayout());
+        this.setJMenuBar(JMALL);
+        JMALL.add(J1);
+        JMALL.add(J2);
+        JMALL.add(J3);
+        JMALL.add(J4);
+        J1.add(JO);
+        J1.add(JC);
+        J1.add(JE);
+        J2.add(JR);
+        J3.add(JXOGame);
+
+
+        JE.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        JXOGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                XOgame OX = new XOgame();
+                OX.setVisible(true);
+                MainFrame.this.setVisible(false);
+
+            }
+        });
+        JR.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Encrypt tool = new Encrypt();
+                tool.setVisible(true);
+                MainFrame.this.setVisible(false);
+            }
+        });
+
+    }
+
+}
